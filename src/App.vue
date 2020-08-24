@@ -18,6 +18,7 @@ export default {
 <style>
 #app {
   background-image: url(https://cdn.hipwallpaper.com/i/4/12/ZraR34.gif);
+  height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
