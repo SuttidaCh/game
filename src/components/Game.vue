@@ -1,44 +1,41 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-sm">
+      <div class="col-6">
         <p>Player</p>
         {{aPlayer.name}}
         <br />
-        <img :src="hp1" height="40px" />
+        <img  :src="hp1" height="40px" />
         HP {{aPlayer.hp}}
       </div>
-      <div class="col-sm">
+      <div class="col-6">
         <p>Monster</p>
         {{aMonster.name}}
         <br />
-        <img :src="hp2" height="40px" />
+        <img  :src="hp2" height="40px" />
         HP {{aMonster.hp}}
       </div>
     </div>
     <div class="row">
-      <div class="col-4">
+      <div class="col-5">
         <br />
         <img style="width:50%" :src="aPlayer.img" />
       </div>
 
-      <div class="col">
+      <div class="col-sm">
         <br />
-        <div v-if="aMonster.hp <=0 ">
-          You Win
-          <br />
-          <img src="https://papuarza.github.io/project-game-pacman/img/monster-red.gif" width="40%" />
-        </div>
-        <div v-else-if="aPlayer.hp <= 0 ">
-          You Lose
-          <br />
-          <img src="https://media3.giphy.com/media/lYfOhwR8WOJlBzpu6I/giphy.gif" width="90%" />
-        </div>
+          <div  v-if="aMonster.hp <=0 ">You Win <br><br />
+             <img src="https://papuarza.github.io/project-game-pacman/img/monster-red.gif" width="60%"> 
+          </div>
+          <div v-else-if="aPlayer.hp <= 0 ">You Lose <br><br />
+             <img src="https://papuarza.github.io/project-game-pacman/img/monster-yellow.gif" width="60%">
+          </div>
         <br />
         <br />
-        <img src="img/vs.png" width="30%" />
+        <br />
+        <img src="img/vs.png" width="50%" />
       </div>
-      <div class="col-4">
+      <div class="col-5">
         <br />
         <img style="width:50%" :src="aMonster.img" />
       </div>
@@ -52,11 +49,7 @@
         <div class="col">
           <button @click="start()" class="btn btn-light ml-2">Start</button>
           <button v-bind:disabled="end" @click="attack()" class="btn btn-light ml-2">Attack</button>
-          <button
-            v-bind:disabled="end"
-            @click="specialattack()"
-            class="btn btn-light ml-2"
-          >Special Attack</button>
+          <button v-bind:disabled="end" @click="specialattack()" class="btn btn-light ml-2">Special Attack</button>
           <button @click="reset()" class="btn btn-light ml-2">Reset</button>
         </div>
       </div>
@@ -68,7 +61,8 @@
 export default {
   data: function () {
     return {
-      win: "https://thumbs.gfycat.com/ContentNecessaryHorseshoebat-max-1mb.gif",
+      
+      win:"https://thumbs.gfycat.com/ContentNecessaryHorseshoebat-max-1mb.gif",
       playmax: "",
       monsmax: "",
       hp1:
@@ -76,7 +70,7 @@ export default {
       hp2:
         "https://thumbs.gfycat.com/MixedBiodegradableBluetonguelizard-size_restricted.gif",
       end: false,
-      aPlayer: { name: "", hp: 1, img: "", hp1: "" },
+      aPlayer: { name: "", hp:1, img: "", hp1: "" },
       // ชื่อ player[1].name  randomเอา
       player: [
         {
@@ -154,6 +148,7 @@ export default {
       //1.random player 1-3  ชื่อ hp รูป
       this.aPlayer = this.player[this.random(1, 5) - 1];
       this.aMonster = this.monster[this.random(1, 5) - 1];
+      
     },
     attack: function () {
       this.playmax = Math.floor(Math.random() * 10 + 5);
