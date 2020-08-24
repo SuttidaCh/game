@@ -5,14 +5,14 @@
         <p>Player</p>
         {{aPlayer.name}}
         <br />
-        <img v-bind:style="{width :aPlayer.hp + 'px'}" :src="hp1" height="150px" />
+        <img :src="hp1" height="40px" />
         HP {{aPlayer.hp}}
       </div>
       <div class="col-sm">
         <p>Monster</p>
         {{aMonster.name}}
         <br />
-        <img v-bind:style="{width :aMonster.hp + 'px'}" :src="hp1" height="150px" />
+        <img :src="hp2" height="40px" />
         HP {{aMonster.hp}}
       </div>
     </div>
@@ -24,12 +24,17 @@
 
       <div class="col">
         <br />
-        <br />
-        <div id="score">
-          <div v-if="aMonster.hp <= 0 ">You Win</div>
-          <div v-else-if="aPlayer.hp <= 0 ">You Lose</div>
+        <div v-if="aMonster.hp <=0 ">
+          You Win
+          <br />
+          <img src="https://papuarza.github.io/project-game-pacman/img/monster-red.gif" width="40%" />
         </div>
-
+        <div v-else-if="aPlayer.hp <= 0 ">
+          You Lose
+          <br />
+          <img src="https://media3.giphy.com/media/lYfOhwR8WOJlBzpu6I/giphy.gif" width="90%" />
+        </div>
+        <br />
         <br />
         <img src="img/vs.png" width="30%" />
       </div>
@@ -41,13 +46,17 @@
     <br />
     <br />
     <br />
-    
+    <br />
     <div class="d-flex justify-content-center">
       <div class="but">
         <div class="col">
           <button @click="start()" class="btn btn-light ml-2">Start</button>
           <button v-bind:disabled="end" @click="attack()" class="btn btn-light ml-2">Attack</button>
-          <button v-bind:disabled="end" @click="specialattack()" class="btn btn-light ml-2">Special Attack</button>
+          <button
+            v-bind:disabled="end"
+            @click="specialattack()"
+            class="btn btn-light ml-2"
+          >Special Attack</button>
           <button @click="reset()" class="btn btn-light ml-2">Reset</button>
         </div>
       </div>
@@ -59,12 +68,13 @@
 export default {
   data: function () {
     return {
+      win: "https://thumbs.gfycat.com/ContentNecessaryHorseshoebat-max-1mb.gif",
       playmax: "",
       monsmax: "",
       hp1:
-        "https://png2.cleanpng.com/sh/4fd0a27b7987eb4a9f52a2cb1a0dbe7c/L0KzQYm3V8EzN5l1R91yc4Pzfri0kPl5bZ0yeeR9LXjocb37iL1pbZJxjNo2YnH1PYbpVMdkOWNne6ptMUm6PoO3UsQzQWQ5Sac8MUS1SYK9U8gzOmcziNDw/kisspng-pixel-art-health-health-bar-5b47c12bc8d197.2024293415314291638226.png",
+        "https://thumbs.gfycat.com/MixedBiodegradableBluetonguelizard-size_restricted.gif",
       hp2:
-        "https://png2.cleanpng.com/sh/4fd0a27b7987eb4a9f52a2cb1a0dbe7c/L0KzQYm3V8EzN5l1R91yc4Pzfri0kPl5bZ0yeeR9LXjocb37iL1pbZJxjNo2YnH1PYbpVMdkOWNne6ptMUm6PoO3UsQzQWQ5Sac8MUS1SYK9U8gzOmcziNDw/kisspng-pixel-art-health-health-bar-5b47c12bc8d197.2024293415314291638226.png",
+        "https://thumbs.gfycat.com/MixedBiodegradableBluetonguelizard-size_restricted.gif",
       end: false,
       aPlayer: { name: "", hp: 1, img: "", hp1: "" },
       // ชื่อ player[1].name  randomเอา
@@ -77,7 +87,7 @@ export default {
         },
         {
           name: "Iron Man",
-          hp: 250,
+          hp: 450,
           img:
             "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/627fe721-846f-4f75-ac61-111ca00b27dd/dd5vz5r-a29da2d5-4039-410a-a362-6dc04290123a.png/v1/fill/w_1280,h_2009,strp/iron_man___avengers_end_game__render_1__by_alanmac95_dd5vz5r-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0yMDA5IiwicGF0aCI6IlwvZlwvNjI3ZmU3MjEtODQ2Zi00Zjc1LWFjNjEtMTExY2EwMGIyN2RkXC9kZDV2ejVyLWEyOWRhMmQ1LTQwMzktNDEwYS1hMzYyLTZkYzA0MjkwMTIzYS5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.6eM_wtfFPFKCoovbNlAjkoP0JioBdwAKrjkg7tEltd0",
         },
@@ -89,7 +99,7 @@ export default {
         },
         {
           name: "Spiderman",
-          hp: 200,
+          hp: 310,
           img:
             "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/bf71705b-0d8b-45c5-a07d-a62e1e85127d/dberjlb-cc88c30b-94d1-40b6-886c-73544602fe0a.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvYmY3MTcwNWItMGQ4Yi00NWM1LWEwN2QtYTYyZTFlODUxMjdkXC9kYmVyamxiLWNjODhjMzBiLTk0ZDEtNDBiNi04ODZjLTczNTQ0NjAyZmUwYS5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.6fb7llS7H7LBicbuAqpbVl48zT_CsCDuxfgVrmVLy0g",
         },
@@ -116,7 +126,7 @@ export default {
         },
         {
           name: "Rocket",
-          hp: 250,
+          hp: 300,
           img:
             "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/bf71705b-0d8b-45c5-a07d-a62e1e85127d/dbfpfbj-566b57a8-641a-4198-9245-d24c13345f43.png/v1/fill/w_1024,h_1321,strp/rocket_by_cptcommunist_dbfpfbj-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0xMzIxIiwicGF0aCI6IlwvZlwvYmY3MTcwNWItMGQ4Yi00NWM1LWEwN2QtYTYyZTFlODUxMjdkXC9kYmZwZmJqLTU2NmI1N2E4LTY0MWEtNDE5OC05MjQ1LWQyNGMxMzM0NWY0My5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.yzwYzpBZns31v07RhmNvcyTwyRZbhLs2bQgtb0VxPSY",
         },
