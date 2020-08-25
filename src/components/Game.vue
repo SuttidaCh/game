@@ -19,7 +19,8 @@
     <div class="row">
       <div class="col-5">
         <br />
-        <img style="width:50%" :src="aPlayer.img" />
+        <div  style="position: absolute; z-index: 1;"><img  style="width:750px" :src="aura"></div>
+        <div  style="position: absolute; z-index: 2;"><img style="width:50%" :src="aPlayer.img" /></div>
       </div>
 
       <div class="col-sm">
@@ -37,7 +38,8 @@
       </div>
       <div class="col-5">
         <br />
-        <img style="width:50%" :src="aMonster.img" />
+        <div style="position: absolute; z-index: 3;"><img style="width:750px" :src="aura"></div>
+       <div style="position: absolute; z-index: 4;"><img style="width:50%" :src="aMonster.img" /></div>
       </div>
     </div>
     <br />
@@ -61,7 +63,7 @@
 export default {
   data: function () {
     return {
-      
+      aura:"https://i.pinimg.com/originals/cd/14/68/cd1468741cb6d85d2b9d84b9ca6d1829.gif",
       win:"https://thumbs.gfycat.com/ContentNecessaryHorseshoebat-max-1mb.gif",
       playmax: "",
       monsmax: "",
@@ -95,7 +97,7 @@ export default {
           name: "Spiderman",
           hp: 310,
           img:
-            "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/bf71705b-0d8b-45c5-a07d-a62e1e85127d/dberjlb-cc88c30b-94d1-40b6-886c-73544602fe0a.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvYmY3MTcwNWItMGQ4Yi00NWM1LWEwN2QtYTYyZTFlODUxMjdkXC9kYmVyamxiLWNjODhjMzBiLTk0ZDEtNDBiNi04ODZjLTczNTQ0NjAyZmUwYS5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.6fb7llS7H7LBicbuAqpbVl48zT_CsCDuxfgVrmVLy0g",
+            "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/bf71705b-0d8b-45c5-a07d-a62e1e85127d/dberjrc-0995759b-0bf1-4446-93c6-c38d0879d71d.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvYmY3MTcwNWItMGQ4Yi00NWM1LWEwN2QtYTYyZTFlODUxMjdkXC9kYmVyanJjLTA5OTU3NTliLTBiZjEtNDQ0Ni05M2M2LWMzOGQwODc5ZDcxZC5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.l7-nBOaH6WQhPOhhgpdbIgiQcZXWWCOTCT5hX_ZIiO4",
         },
         {
           name: "Captain Marvel",
@@ -194,4 +196,5 @@ div {
   position: fixed;
   bottom: 25px;
 }
+
 </style>
